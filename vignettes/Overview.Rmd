@@ -1,0 +1,58 @@
+---
+title: "Overview"
+author: "Chinmay Mandal"
+date: "January 12, 2017"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview of the FARS package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE, include = FALSE}
+library(Assignment3.2.1)
+library(dplyr)
+library(maps)
+```
+
+This vignette gives an overview of the Assignment3.2.1. The package is designed to analyze FARS data.
+
+## Package functions
+
+Following are exported functions:
+
+- `fars_read()`
+- `fars_summarize_years()`
+- `fars_map_state()`
+
+For example purpose data on FARS can be found in `\extdata` folder.
+
+## Read from a CSV file
+The function `fars_read()` can be used to read from a csv file.validates the file path and abort the process if the path is incorrect with an error message. This function returns a data frame of records.
+
+
+```{r fars_read_example}
+filename <- system.file("extdata/accident_2013.csv.bz2", package = "Assignment3.2.1")
+fars_read(filename)
+```
+
+## Summarize accident cases
+
+The function `fars_summarize_years()` takes a list of years and based on the data, a summary of accidents occured in a given month and year is prepared. The input file should be present in data folder inside working directory.
+
+```{r fars_summarize_years_example}
+setwd(system.file("extdata", package = "Assignment3.2.1"))
+fars_summarize_years(2013:2015)
+```
+
+## Plotting accident locations on map
+
+The function `fars_map_state()` helps to plot the accident hit location on map. It takes two input the satate number and year.
+
+
+```{r fars_map_state_example}
+setwd(system.file("extdata", package = "Assignment3.2.1"))
+fars_map_state(45, 2015)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
