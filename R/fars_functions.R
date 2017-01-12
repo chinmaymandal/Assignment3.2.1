@@ -83,7 +83,7 @@ fars_read_years <- function(years) {
 #'
 #' The function contructs a new filename.
 #'
-#' @param years A numeric vector
+#' @param years A numeric vector.
 #'
 #' @return This function returns a data frame of month, year and total number of incedents as columns.
 #'
